@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title%} Blog de Noticias{% endblock %}
+{% block content %}
+<div class="columns is-multiline">
+    <!-- Caja Superior (Columna completa) -->
+<div class="column is-12">
+    <div class="box">
+        <h1 class="title has-text-centered is-4">Panel principal</h1>
+
+    </div>
+</div>
+
+
+    <!-- Columna de la izquierda (tamaño 3) -->
+    <div class="column is-5">
+        <div class="box">
+            <h4 class="title is-5">📰 Administrar Noticias</h4>
+            <p>Crear, modificar, eliminar</p>
+            <br>
+            <a href="{{ url_for('posts.listar_posts') }}" class="button is-info">
+                &nbsp; Acceder  &nbsp; <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Columna principal (en el centro, tamaño 6) -->
+    <div class="column is-2">
+        <br><br>
+        {% for post in posts %}
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">{{ post.title }}</p>
+                        <p class="subtitle is-5">{{ post.category.name }}</p>
+                    </div>
+                </div>
+                <div class="content">
+                    {{ post.content }}
+                    <br><br>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Columna de la derecha (tamaño 3) -->
+    <div class="column is-5">
+        <div class="box">
+            <h4 class="title is-5">📂 Administrar Categorías</h4>
+            <p>Crear, modificar, eliminar</p>
+            <br>
+            
+                &nbsp; Acceder  &nbsp; <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
