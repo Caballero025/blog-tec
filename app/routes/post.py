@@ -28,3 +28,26 @@ def add_post():
     #Aqui sigue si es GET
     categories = Category.query.all()
     return render_template('posts/create_post.html', categories=categories)
+#Actualizar post
+@posts_bp.route('/update/<int:id>', methods=['GET','POST'])
+def update_post(id):
+    post = Post.query.get(id)
+    if request.method == 'POST':
+        post.title = request.form['title']
+        post.category_id = request.form['category_id']
+        post.content = request.form['content']
+        db.session.commit()
+        return redirect(url_for('posts.listar_posts'))
+    
+    categories = Category.query.all()
+    return render_template('posts/update_post.html', post=post, categories=categories)
+
+#Eliminar post
+@posts_bp.route('/delete/<int:id>')
+def delete_post(id):
+    post = Post.query.get(id)
+    if post:
+        db.session.delete(post)
+        db.session.commit()
+    return redirect(url_for('posts.listar_posts'))
+

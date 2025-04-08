@@ -4,7 +4,7 @@
 <div class="columns">
     <div class="column is-offset-3 is-6">
         <a  href="{{ url_for('posts.add_post') }}" class="button is-success"><i class="fa-solid fa-plus"></i> &nbsp; Agregar noticia</a>
-              
+                
         
         <br><br>
         {% for post in posts %}
@@ -20,7 +20,9 @@
                     {{ post.content }}
                     <br><br>
                 </div>
-                
+                <a href="{{ url_for('posts.update_post', id = post.id )}}" class="button is-small is-link is-outlined"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{{ url_for('posts.delete_post', id = post.id )}}" class="button is-small is-danger is-outlined"><i class="fa-solid fa-trash"></i></a>
+   
             </div>
         </div>
         {% endfor %}
