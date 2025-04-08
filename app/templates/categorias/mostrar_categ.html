@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Categorías{% endblock %}
+{% block content %}
+
+<a  href="{{ url_for('categ.create_categ') }}" class="button is-success"><i class="fa-solid fa-plus"></i> &nbsp; Agregar Categoria</a>
+<a class="button is-danger" href="{{ url_for('index') }}"> <i class="fa-solid fa-arrow-left"></i> &nbsp; Salir</a>
+<br>
+<br>
+<table class = "table is-bordered">
+<thead>
+    <th class="title has-text-centered is-5">Id</th>
+    <th class="title has-text-centered is-5">Nombre</th>
+    <th  class="title has-text-centered is-5">Acciones</th>
+</thead>
+<tbody>
+    {% for category in categories %}
+    <tr>
+    <td>{{category.id}}</td>
+    <td>{{category.name}}</td>
+    <td><a href="{{url_for('categ.update_categ',id = category.id)}}" class="button is-warning">Actualizar</a>
+    <a href="{{url_for('categ.delete_categ',id = category.id)}}" class="button is-danger">Eliminar</a></td>
+  </tr> 
+  {% endfor %}
+
+</tbody>
+
+
+
+
+</table>
+
+{% endblock %}

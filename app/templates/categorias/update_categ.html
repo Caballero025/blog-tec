@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Actualizar Categoria {% endblock %}
+{% block content %}
+
+<h3 class="has-text-weight-bold">Actualizar Alumno</h3>
+<br>
+<form action="{{ url_for('categ.update_categ',id = categor.id) }}" method="POST">
+   
+    <div class="form-group mb-3">
+        <label for="name" class="has-text-weight-bold">Nombre</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{categor.name}}" required > 
+    </div>
+    <br>
+    <button class="button is-success " type="submit">Actualizar</button>
+    <a class="button is-danger" href="{{ url_for('categ.listar_categ') }}">Cancelar</a>
+
+
+</form>
+
+{% endblock %}

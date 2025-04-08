@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Agregar Categoria{% endblock %}
+{% block content %}
+
+<h3 class="has-text-weight-bold">Agregar Categoria</h3>
+<br>
+<form action="{{ url_for('categ.create_categ') }}" method="POST">
+  
+    <div class="form-group mb-3">
+        <label for="name" class="has-text-weight-bold">Nombre</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    
+    <br>
+    <button class="button is-success " type="submit">Agregar</button>
+    <a class="button is-danger" href="{{ url_for('categ.listar_categ') }}">Cancelar</a>
+
+</form>
+
+{% endblock %}
